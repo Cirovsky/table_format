@@ -31,16 +31,16 @@ def table_format(planilha:pd.ExcelWriter, sheet_name:str, df:pd.DataFrame, table
     '''Format a dataframe into an 'Excel' table'''
     table_header:list[dict] = [{'header': col} for col in df.columns]
     bottom_num = len(df) + 1
-    right_letter:str = numbers_letters_conversion(numero=len(df.columns))
+    right_letter:str = numbers_letters_conversion(len_cols=len(df.columns))
     table_corner = right_letter + str(bottom_num)
     worksheet: Worksheet = planilha.sheets[sheet_name]
     worksheet.add_table('A1:' + table_corner, {'columns': table_header, 'name': table_name})
 
-def export_xlsx (df:pd.DataFrame, output_file:str, sheet_name:str, table_name:str|None = None, padrao:bool = True) -> None:
+def export_xlsx (df:pd.DataFrame, output_file:str, sheet_name:str, table_name:str|None = None) -> None:
     '''Export a dataframe to an xlsx document with a formatted table'''
     if table_name is None:
         table_name = sheet_name
-    with pd.ExcelWriter(path=output_file, engine="xlsxwriter") as tabela:
+    with pd.ExcelWriter(path=f"{output_file}.xlsx", engine="xlsxwriter") as tabela:
         df.to_excel(excel_writer=tabela, sheet_name=sheet_name, index=False)
         table_format(tabela, sheet_name, df, table_name)
-        print(f"table created at {output_file}.")
+        print(f"table created at {output_file}.xlsx.")
