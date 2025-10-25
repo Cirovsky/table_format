@@ -1,13 +1,17 @@
-*.py[codz]
-*$py.class
+#Project and venv archives
 pyvenv.cfg
 bin/
 lib64/
 formatar_tabela
 
+#archives
+
+*.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[codz]
+*$py.class
 
 # C extensions
 *.so
