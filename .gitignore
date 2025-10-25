@@ -1,7 +1,13 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
 *.py[codz]
 *$py.class
+pyvenv.cfg
+bin/
+lib64/
+formatar_tabela
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
 
 # C extensions
 *.so
